@@ -75,12 +75,18 @@ export default function App() {
       {activeTab === 'dashboard' ? (
         <Header
           showGreeting
-          onLogout={() => setIsAuthenticated(false)}
+          unreadCount={3}
+          onNotificationsClick={() => setActiveTab('notifications')}
         />
       ) : (
         <Header
           title={PAGE_TITLES[activeTab]}
-          onLogout={() => setIsAuthenticated(false)}
+          unreadCount={3}
+          onNotificationsClick={
+            activeTab === 'notifications'
+              ? undefined
+              : () => setActiveTab('notifications')
+          }
         />
       )}
 

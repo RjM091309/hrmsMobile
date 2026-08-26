@@ -1,16 +1,18 @@
-import { LogOut } from 'lucide-react';
+import { Bell } from 'lucide-react';
 import { currentUser } from '../data/mock';
 
 export function Header({
   title,
   subtitle,
   showGreeting = false,
-  onLogout,
+  onNotificationsClick,
+  unreadCount = 0,
 }: {
   title?: string;
   subtitle?: string;
   showGreeting?: boolean;
-  onLogout?: () => void;
+  onNotificationsClick?: () => void;
+  unreadCount?: number;
 }) {
   const now = new Date();
   const hour = now.getHours();
@@ -47,16 +49,21 @@ export function Header({
               </p>
             </div>
 
-            {/* Top Right Logout Button */}
-            {onLogout && (
+            {/* Top Right Notifications Button */}
+            {onNotificationsClick && (
               <button
                 type="button"
-                onClick={onLogout}
-                className="inline-flex items-center justify-center rounded-2xl bg-white/15 p-2.5 text-white/90 backdrop-blur-md transition active:scale-95 hover:bg-rose-500/30 hover:text-white ring-1 ring-white/20 shadow-sm"
-                aria-label="Sign Out"
-                title="Sign Out"
+                onClick={onNotificationsClick}
+                className="relative inline-flex items-center justify-center rounded-2xl bg-white/15 p-2.5 text-white/90 backdrop-blur-md transition active:scale-95 hover:bg-white/25 hover:text-white ring-1 ring-white/20 shadow-sm"
+                aria-label="Notifications"
+                title="Notifications"
               >
-                <LogOut className="h-5.5 w-5.5" strokeWidth={2.4} />
+                <Bell className="h-5.5 w-5.5" strokeWidth={2.4} />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-red-500 px-1 text-[9.5px] font-black text-white shadow-sm ring-2 ring-white/40">
+                    {unreadCount}
+                  </span>
+                )}
               </button>
             )}
           </div>
@@ -71,16 +78,21 @@ export function Header({
               )}
             </div>
 
-            {/* Top Right Logout Button on Inner Pages */}
-            {onLogout && (
+            {/* Top Right Notifications Button on Inner Pages */}
+            {onNotificationsClick && (
               <button
                 type="button"
-                onClick={onLogout}
-                className="inline-flex items-center justify-center rounded-2xl bg-white/15 p-2.5 text-white/90 backdrop-blur-md transition active:scale-95 hover:bg-rose-500/30 hover:text-white ring-1 ring-white/20 shadow-sm"
-                aria-label="Sign Out"
-                title="Sign Out"
+                onClick={onNotificationsClick}
+                className="relative inline-flex items-center justify-center rounded-2xl bg-white/15 p-2.5 text-white/90 backdrop-blur-md transition active:scale-95 hover:bg-white/25 hover:text-white ring-1 ring-white/20 shadow-sm"
+                aria-label="Notifications"
+                title="Notifications"
               >
-                <LogOut className="h-5.5 w-5.5" strokeWidth={2.4} />
+                <Bell className="h-5.5 w-5.5" strokeWidth={2.4} />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-red-500 px-1 text-[9.5px] font-black text-white shadow-sm ring-2 ring-white/40">
+                    {unreadCount}
+                  </span>
+                )}
               </button>
             )}
           </div>

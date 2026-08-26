@@ -4,7 +4,6 @@ import {
   Clock,
   CalendarDays,
   ClipboardCheck,
-  Bell,
   User,
 } from 'lucide-react';
 
@@ -28,7 +27,6 @@ const TABS: TabItem[] = [
   { id: 'attendance', label: 'Attendance', Icon: Clock },
   { id: 'leave', label: 'Leave', Icon: CalendarDays },
   { id: 'approvals', label: 'Requests', Icon: ClipboardCheck },
-  { id: 'notifications', label: 'Alerts', Icon: Bell, badge: 3 },
   { id: 'profile', label: 'Profile', Icon: User },
 ];
 
